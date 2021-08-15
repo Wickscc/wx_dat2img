@@ -70,18 +70,21 @@ namespace wx_dat2img
             this.访问主页ToolStripMenuItem.Name = "访问主页ToolStripMenuItem";
             this.访问主页ToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.访问主页ToolStripMenuItem.Text = "访问主页";
+            this.访问主页ToolStripMenuItem.Click += new System.EventHandler(this.访问主页ToolStripMenuItem_Click);
             // 
             // githubToolStripMenuItem
             // 
             this.githubToolStripMenuItem.Name = "githubToolStripMenuItem";
             this.githubToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.githubToolStripMenuItem.Text = "前往Github项目地址";
+            this.githubToolStripMenuItem.Text = "前往Github发布页面";
+            this.githubToolStripMenuItem.Click += new System.EventHandler(this.githubToolStripMenuItem_Click);
             // 
             // giteeToolStripMenuItem
             // 
             this.giteeToolStripMenuItem.Name = "giteeToolStripMenuItem";
             this.giteeToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.giteeToolStripMenuItem.Text = "前往Gitee项目地址";
+            this.giteeToolStripMenuItem.Text = "前往Gitee发布页面";
+            this.giteeToolStripMenuItem.Click += new System.EventHandler(this.giteeToolStripMenuItem_Click);
             // 
             // menuStrip1
             // 
@@ -109,25 +112,25 @@ namespace wx_dat2img
             // 开始转换ToolStripMenuItem
             // 
             this.开始转换ToolStripMenuItem.Name = "开始转换ToolStripMenuItem";
-            this.开始转换ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.开始转换ToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.开始转换ToolStripMenuItem.Text = "开始转换(&B)";
             this.开始转换ToolStripMenuItem.Click += new System.EventHandler(this.开始转换ToolStripMenuItem_Click);
             // 
             // 暂停转换ToolStripMenuItem
             // 
             this.暂停转换ToolStripMenuItem.Name = "暂停转换ToolStripMenuItem";
-            this.暂停转换ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.暂停转换ToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.暂停转换ToolStripMenuItem.Text = "暂停转换(&E)";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(137, 6);
             // 
             // 重新选择ToolStripMenuItem
             // 
             this.重新选择ToolStripMenuItem.Name = "重新选择ToolStripMenuItem";
-            this.重新选择ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.重新选择ToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.重新选择ToolStripMenuItem.Text = "重新选择(&R)";
             this.重新选择ToolStripMenuItem.Click += new System.EventHandler(this.重新选择ToolStripMenuItem_Click);
             // 
@@ -142,7 +145,7 @@ namespace wx_dat2img
             // btn_deldat
             // 
             this.btn_deldat.Name = "btn_deldat";
-            this.btn_deldat.Size = new System.Drawing.Size(180, 22);
+            this.btn_deldat.Size = new System.Drawing.Size(179, 22);
             this.btn_deldat.Text = "转换后删除dat文件";
             this.btn_deldat.Click += new System.EventHandler(this.btn_deldat_Click);
             // 

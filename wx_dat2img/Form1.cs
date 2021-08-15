@@ -62,5 +62,20 @@ namespace wx_dat2img
             openChildForm(new frm_wxdatdir());
             开始转换ToolStripMenuItem.Enabled = true;
         }
+
+        private void 访问主页ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("www.kosvxz.com");
+        }
+
+        private void githubToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/kosvxz/wx_dat2img/releases");
+        }
+
+        private void giteeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://gitee.com/kosvxz/wx_dat2img/releases");
+        }
     }
 }
