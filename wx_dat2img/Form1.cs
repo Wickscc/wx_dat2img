@@ -20,56 +20,47 @@ namespace wx_dat2img
             InitializeComponent();
         }
 
-        private void btnStart_Click(object sender, EventArgs e)
+        private Form activeForm = null;
+        private void openChildForm(Form childForm)
         {
-
-            btnStart.Enabled = false;
-
-            checkedListBox1.Visible = false;
-
-            for (int i = 0; i < checkedListBox1.CheckedItems.Count; i++)
-            {
-                treeView1.Nodes.Add(checkedListBox1.CheckedItems[i].ToString());
-
-                TreeNode rootNode = treeView1.Nodes[i];
-
-                Convert dat2Img = new Convert();
-
-                foreach (string file in Directory.GetFiles(checkedListBox1.CheckedItems[i].ToString(), "*.dat"))
-                {
-                    FileInfo fileInfo = new FileInfo(file);
-                    txtStatus.Text = "处理:" + fileInfo.Name;
-                    Application.DoEvents();
-
-                    TreeNode subNode = rootNode.Nodes.Add(fileInfo.FullName);
-                    //subNode.BackColor = Color.Azure;
-                    subNode.Nodes.Add("→" + dat2Img.to(fileInfo));
-                }
-
-                treeView1.ItemHeight = 22;
-                treeView1.ExpandAll();
-            }
-
-            txtStatus.Text = "处理完毕！";
-
-            btnStart.Enabled = true;
+            if (activeForm != null) activeForm.Close();
+            activeForm = childForm;
+            childForm.TopLevel = false;    //设置不是顶级窗口
+            childForm.FormBorderStyle = FormBorderStyle.None;  //去掉边框
+            childForm.Dock = DockStyle.Fill;   //填充整个容器
+            panel1.Controls.Add(childForm);
+            panel1.Tag = childForm;
+            childForm.Show();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            foreach (string wxid in Directory.GetDirectories(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "WeChat Files"), "wxid*"))
-            {
-                Directory.GetDirectories(Path.Combine(wxid, @"FileStorage\Image")).ToList().ForEach(x =>
-                {
-                    //treeView1.Nodes.Add(x);
-                    checkedListBox1.Items.Add(x);
-                });
-            }
+            openChildForm(new frm_wxdatdir());
         }
 
-        private void toolStripStatusLabel2_Click(object sender, EventArgs e)
+        private void btn_deldat_Click(object sender, EventArgs e)
         {
-            Process.Start("http://www.kosvxz.com");
+            btn_deldat.Checked = !btn_deldat.Checked;
+            if (btn_deldat.Checked)
+            {
+                Decrypt.deldat = true;
+            }
+            else
+            {
+                Decrypt.deldat = false;
+            }
+        }
+        private void 开始转换ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            开始转换ToolStripMenuItem.Enabled = false;
+            openChildForm(new frm_Decrypt());
+        }
+
+        private void 重新选择ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Decrypt.datDir.Clear();
+            openChildForm(new frm_wxdatdir());
+            开始转换ToolStripMenuItem.Enabled = true;
         }
     }
 }
